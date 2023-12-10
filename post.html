@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h2 class="text-danger mt-5">你想同佢講咩？</h2>
+        <form onsubmit="sendEmail()">
+            <textarea class="form-control" id="TextArea" style="height:auto; overflow:hidden;"></textarea>
+            <img class="gif img-fluid mx-auto d-block m-5" alt="gif" src="https://media.tenor.com/b24c_18WrFMAAAAj/cinnamoroll.gif" crossorigin="anonymous">
+            <button type="submit" class="btn btn-danger my-1">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // Get the textarea element
+        var textarea = document.getElementById('TextArea');
+
+        // Add an input event listener to dynamically adjust the height
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        function sendEmail() {
+            var messageBody = document.getElementById('TextArea').innerHTML;
+
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "javiertzr001@gmail.com",
+                Password : "6F75EC3C688D1B6E0FDE044E916C30400326",
+                To : 'javiertzr1@gmail.com',
+                From : "javiertzr001@gmail.com",
+                Subject : "Message From Cinnamoroll",
+                Body : messageBody
+            }).then(
+                message => {
+                    if(message=='OK'){
+                        swal("Message Sent");
+                    }
+                    else{
+                        swal("Error");
+                    }
+                }
+            );
+        }
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
