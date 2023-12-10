@@ -21,6 +21,7 @@ function typeWriter() {
 
 function runTypeWriter() {
     i = 0;
+    document.getElementById("cinnamoroll").src = typingImg;
     txt = getTextAreaInfo();
     clearTextArea();
     typeWriter();
